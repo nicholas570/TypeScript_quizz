@@ -4,7 +4,7 @@ import { Difficulty, QuestionsState, AnswerObject } from './TYPES';
 
 import QuestionCard from './components/QuestionCard';
 
-import { GlobalStyle, Wrapper } from './css/app.styles';
+import { GlobalStyle, Wrapper, Wave } from './css/app.styles';
 
 const TOTAL_QUESTIONS = 10;
 
@@ -58,10 +58,9 @@ function App(): JSX.Element {
       <GlobalStyle />
       <Wrapper>
         <div className='App'>
-          <h1>React Quizz</h1>
           {(gameOver || userAnswers.length === TOTAL_QUESTIONS) && (
             <button type='button' className='start' onClick={startQuizz}>
-              Start
+              {userAnswers.length === TOTAL_QUESTIONS ? 'Play again' : 'Start'}
             </button>
           )}
           <p className='score'>Score: {score} </p>
@@ -87,6 +86,14 @@ function App(): JSX.Element {
             )}
         </div>
       </Wrapper>
+      <Wave>
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 319'>
+          <path
+            fill='#7260D9'
+            fill-opacity='1'
+            d='M0,128L48,138.7C96,149,192,171,288,181.3C384,192,480,192,576,165.3C672,139,768,85,864,85.3C960,85,1056,139,1152,154.7C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'></path>
+        </svg>
+      </Wave>
     </>
   );
 }
